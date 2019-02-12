@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+DirectoryIndex inicio.rb
+RewriteRule ^ inicio.rb [QSA,L]
+Action eruby-script /cgi-bin/eruby
+AddHandler eruby-script .rhtml
+DirectoryIndex index.html index.rhtml
+AddDefaultCharset utf-8

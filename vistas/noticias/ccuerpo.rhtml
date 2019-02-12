@@ -1,0 +1,33 @@
+<div id="noticia">
+
+<% noticias.each do |item| %>
+
+      <div class="articulo">
+        <h2 title="<%=item[1]%>"><%=item[1]%></h2>
+        <img src="/<%=item[2]%>" class="imart"/>
+        <div class="descrip">
+          <p><%=item[3]%></p>
+        </div>
+        <div class="leer">
+          <a href="/noticias/simple/?id=<%=item[0]%>" class="boton"title="leer mas">Leer Mas...</a>
+        </div>
+        <div class="date">
+          <p><i class="fa fa-calendar"></i> &nbsp;PUBLICADO <%=item[8]%> </p>
+          <p class="autor"> <i class="fa fa-user"></i>&nbsp; <%=item[4]%></p>
+          <p><i class="fa fa-eye"></i>&nbsp; <%=item[6]%>&nbsp; Visitas</p>
+          <p class="autor"><i class="fa fa-comments"></i>&nbsp; <%=item[9]%> COMENTARIOS</p>
+          <p><i class="fa fa-tags"></i>&nbsp; <%=item[5]%></p></div>
+
+      </div>
+  <% end%>
+
+<div class="paginador">
+<ul class="pagina">
+<li {{selected}}><a href="/noticias/categorias/?pag=1&cat={{cate}}&orden={{orden}}&limite={{limite}}">Inicio</a></li>
+<li {{selected}}><a href="/noticias/categorias/?pag={{ant}}&cat={{cate}}&orden={{orden}}&limite={{limite}}">Anterior</a></li>
+<li>{{pag}}</li>
+<li {{selected2}}><a href="/noticias/categorias/?pag={{sig}}&cat={{cate}}&orden={{orden}}&limite={{limite}}">Siguiente</a></li>
+<li {{selected2}}><a href="/noticias/categorias/?pag={{total}}&cat={{cate}}&orden={{orden}}&limite={{limite}}">Fin</a></li>
+</ul>
+</div>
+</div>

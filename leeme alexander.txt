@@ -1,0 +1,12 @@
+C:/Ruby200/bin/ruby.exe
+
+gem install cgi-exception
+
+
+Download it, run it to extract it somewhere (permanent). Then cd to it, run ruby dk.rb init and ruby dk.rb install to bind it to ruby installations in your path
+
+gem install mysql --platform=ruby -- --with-mysql-dir=C:/mysql-connector-c-noinstall-6.0.2-win32
+
+gem install mysql --platform=ruby -- --with-mysql-include=C:/mysql-connector-c-noinstall-6.0.2-win32
+include --with-mysql-lib=C:/mysql-connector-c-noinstall-6.0.2-win32
+\lib\opt

@@ -1,0 +1,154 @@
+<body><div class="todo"><script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+    <div class="cabeza"><%=script%>
+    <a href="inicio"><div class="imglogo">
+
+<!-- <p><span class="font-effect-3d-float">OVERCLOCK<span class="b">.</span>TECH</span></p> -->
+</div></a>
+<div class="mi">
+  <a href="/inicio"><div class="col">Inicio</div></a>
+  <a href="/productos"><div class="col">Productos</div></a>
+  <a href="/proyectos"><div class="col">Proyectos</div></a>
+  <a href="/acerca"><div class="col">Qu&iacute;enes Somos</div></a>
+  <a href="/servicios"><div class="col">Servicios</div></a>
+  <a href="/noticias"><div class="col"  id="activo">Noticias</div></a>
+  <a href="/contacto"><div class="col">Contacto</div></a>
+</div>
+    </div>
+
+<div class="cuerpo">
+<div class="logeo">
+  <%=log%>
+</div>
+
+<div class="buscar">
+<h2 class="h2 font-effect-3d-float" title="noticias">Noticias</h2>
+<form name="buscador" action="noticias"><input type="text" name="b" placeholder="Buscar:"/><input type="submit" value="buscar"title="buscar"/></form>
+</div>
+
+<ul class="mm">
+<li><a href="/inicio"title="inicio">Inicio</a></li>
+<li class="divider"></li>
+<li><a href="/noticias">Noticias</a></li>
+<li class="divider"></li>
+<li class="activo"title="{{cate}}"><a><%=categ%></a></li>
+</ul>
+
+<div class="servicios">
+
+<div class="limite">
+<form  name="orden" method="get">
+<input type="hidden" name="pagina" value="{{pag}}"/>
+<input type="hidden" name="cat" value="{{cate}}"/>
+<label class="m custom-select">
+
+<select onChange="from()" name="limit">
+<option {{si}} value=5>5</option>
+<option {{si2}} value=10>10</option>
+<option {{si3}} value=15>15</option>
+<option {{si4}} value=20>20</option>
+<option {{si5}} value=25>25</option>
+<option {{si6}} value=30>30</option>
+</select>
+</label>
+
+<label class="n custom-select">
+<select onChange="from()" name="cambio">
+<option {{ok1}} value='DESC'>Publicaciones Nuevas</option>
+<option {{ok}} value='ASC'>Publicaciones Anteriores</option>
+</select>
+
+</label> </form>
+</div>
+
+<div id="noticia">
+
+<% noticias.each do |item| %>
+
+      <div class="articulo">
+        <h2 title="<%=item[1]%>"><%=item[1]%></h2>
+        <img src="/<%=item[2]%>" class="imart"/>
+        <div class="descrip">
+          <p><%=item[3]%></p>
+        </div>
+        <div class="leer">
+          <a href="/noticias/simple/?id=<%=item[0]%>" class="boton"title="leer mas">Leer Mas...</a>
+        </div>
+        <div class="date">
+          <p><i class="fa fa-calendar"></i> &nbsp;PUBLICADO <%=item[8]%> </p>
+          <p class="autor"> <i class="fa fa-user"></i>&nbsp; <%=item[4]%></p>
+          <p><i class="fa fa-eye"></i>&nbsp; <%=item[6]%>&nbsp; Visitas</p>
+          <p class="autor"><i class="fa fa-comments"></i>&nbsp; <%=item[9]%> COMENTARIOS</p>
+          <p><i class="fa fa-tags"></i>&nbsp; <%=item[5]%></p></div>
+
+      </div>
+  <% end%>
+
+<div class="paginador">
+<ul class="pagina">
+<li {{selected}}><a href="/noticias/categorias/?pag=1&cat={{cate}}&orden={{orden}}&limite={{limite}}">Inicio</a></li>
+<li {{selected}}><a href="/noticias/categorias/?pag={{ant}}&cat={{cate}}&orden={{orden}}&limite={{limite}}">Anterior</a></li>
+<li>{{pag}}</li>
+<li {{selected2}}><a href="/noticias/categorias/?pag={{sig}}&cat={{cate}}&orden={{orden}}&limite={{limite}}">Siguiente</a></li>
+<li {{selected2}}><a href="/noticias/categorias/?pag={{total}}&cat={{cate}}&orden={{orden}}&limite={{limite}}">Fin</a></li>
+  </ul>
+  </div>
+
+</div>
+<div class="categoria">
+<h2>Categorias</h2>
+<div class="cat">
+  <% categorias.each do |item| %>
+<a href="/noticias/categorias/?cat=<%=item[1]%>"><p><i class="fa fa-tags"></i> <%=item[1]%></p></a>
+<% end %>
+</div>
+<h2>Ultimos Comentarios</h2>
+<div class="combello">
+<% comentario.each do |item|%>
+<a href="/noticias/simple/?id=<%=item[6]%>"><div class="comecont">
+<img src="/<%=item[3]%>" class="fotocom"/>
+<p class="autor"><i class="fa fa-user"></i> &nbsp;<%=item[2]%></p>
+<p><%=item[1]%></p>
+<p><i class="fa fa-calendar"></i>&nbsp; <%=item[4]%>&nbsp;
+ <span class="autor"><i class="fa fa-tags"></i> &nbsp;<%=item[5]%></span></p>
+</div></a>
+<% end %>
+
+</div>
+<a href="test/rss.php" title="lector de noticias"><img src="/imagenes/rss.png" class="rss"/></a>
+<a href="http://www.youtube.com" title="Vea nuestros videos en youtube"><img src="/imagenes/youtubeFooter.png" class="rss"/></a>
+<a href="http://www.instagram.com" title="Vea nuestras fotos mas recientes en instagram"><img src="/imagenes/instagramf.jpg" class="rss"/></a>
+<a href="http://www.facebook.com" title="Siguenos en facebook"><img src="/imagenes/facebook_01.gif" class="rss"/></a>
+<!--AUDIOPLAYER-->
+<audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+       
+        <source type="audio/mp3" src="/<%=musica.first[1]%>">
+
+    </audio>
+            <ul id="playlist">
+              <% musica.each do |item| %>
+        <li>
+            <a href="/<%=item[1]%>">
+                <%=item[2]%>
+            </a>
+        </li>
+       <% end %>
+    </ul>      
+<!--chatbox-->
+<div class="shout_caja">
+<div class="header">overclocktech<span class="naranja"> . </span>chat <div class="open_btn">&nbsp;</div></div>
+  <div class="toggle_chat">
+  <div class="message_box">
+    </div>
+    <div class="user_info">
+   <input name="shout_message" id="shout_message" type="text" placeholder="Escribe un mensaje y Pulsa Enter" maxlength="100" />
+   <span id="es"></span> 
+    </div>
+    </div>
+</div>
+<!--chatbox-->
+
+</div>
+
+</div>
+
+</div>

@@ -1,0 +1,131 @@
+<body><div class="todo"><script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+    <div class="cabeza"><%=script%>
+    <a href="inicio"><div class="imglogo">
+
+<!-- <h1>OVERCLOCK . TECH</h1> -->
+</div></a>
+<div class="mi">
+  <a href="/inicio"><div class="col">Inicio</div></a>
+  <a href="/productos"><div class="col">Productos</div></a>
+  <a href="/proyectos"><div class="col">Proyectos</div></a>
+  <a href="/acerca"><div class="col">Qu&iacute;enes Somos</div></a>
+  <a href="/servicios"><div class="col">Servicios</div></a>
+  <a href="/noticias"><div class="col"  id="activo">Noticias</div></a>
+  <a href="/contacto"><div class="col">Contacto</div></a>
+</div>
+    </div>
+
+<div class="cuerpo">
+
+<div class="servicios">
+<div id="noticia">
+
+  <% noticias.each do |item| %>
+<div class="articulo">
+<h2 title="<%=item[1]%>"><%=item[1]%></h2>
+<img src="/<%=item[2]%>" class="imart"/>
+<div class="descrip">
+<p><%=item[3]%></p>
+</div>
+<div class="leer">
+<a href="/noticias" class="boton"title="atras">Atras</a>
+</div>
+<div class="date">
+<p><i class="fa fa-calendar"></i>&nbsp; PUBLICADO&nbsp; <%=item[8]%> </p>
+<p class="autor"> <i class="fa fa-user"></i>&nbsp; <%=item[4]%></p>
+<p><i class="fa fa-eye"></i>&nbsp; <%=item[6]%>&nbsp; Visitas</p>
+<p class="autor"><i class="fa fa-comments"></i>&nbsp; <%=item[9]%> &nbsp;COMENTARIOS</p>
+<p><i class="fa fa-tags"></i>&nbsp; <%=item[5]%></p></div>
+
+</div>
+<%end%>
+
+
+  <div class="comentar">
+  <h2>Comentarios</h2>
+  <div class="comentarios">
+
+
+    <% comxid.each do |item| %>
+   
+<div class="comentarioscont">
+   <img src="/<%=item[3]%>" class="fotocom"/>
+<div class='comentainer'>
+<p class="autor"><i class="fa fa-user"></i>&nbsp; <%=item[2]%></p>
+<p><%=item[1]%></p>
+<p><i class="fa fa-calendar"></i>&nbsp; <%=item[4]%>
+ <span class="autor"> &nbsp;<i class="fa fa-tags"></i>&nbsp; <%=item[6]%></span></p>
+</div>
+</div>
+<% end %>
+</div>
+<div class="formcom">
+<form method="post" action="noticias/com">
+<h2>Comentar</h2>
+<input type="text" name="autor" placeholder="Nombre:"/>
+<input type="text" name="correo" placeholder="Correo:"/>
+<input type="hidden" name="id" value="{id}"/>
+<input type="hidden" name="foto" value="imagenes/anonimo.png"/>
+<input type="hidden" name="categoria" value="[categ]"/>
+<textarea placeholder="Deja tu Comentario:" name="comentario"></textarea> 
+<p><input type="submit" value="Enviar"/></p>
+</form>
+</div></div>
+
+
+</div>
+<div class="categoria">
+<h2>Categorias</h2>
+<div class="cat">
+  <% categorias.each do |item| %>
+      <a href="/noticias/categorias/?cat=<%=item[1]%>"><p><i class="fa fa-tags"></i> <%=item[1]%></p></a>
+  <% end %>
+</div>
+<h2>Ultimos Comentarios</h2>
+<div class="combello">
+  <% comentario.each do |item|%>
+      <a href="/noticias/simple/?id=<%=item[6]%>"><div class="comecont">
+        <img src="/<%=item[3]%>" class="fotocom"/>
+        <p class="autor"><i class="fa fa-user"></i> &nbsp;<%=item[2]%></p>
+        <p><%=item[1]%></p>
+        <p><i class="fa fa-calendar"></i>&nbsp; <%=item[4]%>&nbsp;
+          <span class="autor"><i class="fa fa-tags"></i> &nbsp;<%=item[5]%></span></p>
+      </div></a>
+  <% end %>
+
+</div>
+
+  <!--AUDIOPLAYER-->
+  <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+
+    <source type="audio/mp3" src="/<%=musica.first[1]%>">
+
+  </audio>
+  <ul id="playlist">
+    <% musica.each do |item| %>
+        <li>
+          <a href="/<%=item[1]%>">
+            <%=item[2]%>
+          </a>
+        </li>
+    <% end %>
+  </ul>
+  <!--chatbox-->
+<div class="shout_caja">
+<div class="header"><div class="open_btn">&nbsp;</div></div>
+  <div class="toggle_chat">
+  <div class="message_box">
+    </div>
+    <div class="user_info">
+   <input name="shout_message" id="shout_message" type="text" placeholder="Escribe un mensaje y Pulsa Enter" maxlength="100" />
+   <span id="es"></span> 
+    </div>
+    </div>
+</div>
+<!--chatbox-->
+
+</div>
+
+</div>
+
+</div>

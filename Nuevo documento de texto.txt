@@ -1,0 +1,3 @@
+Action eruby-script /cgi-bin/eruby
+AddHandler eruby-script .rhtml
+DirectoryIndex index.html index.rhtml

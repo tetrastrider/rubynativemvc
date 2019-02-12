@@ -1,0 +1,45 @@
+
+    <div class="cabeza"><%=script%>
+    <a href="inicio" title="inicio"><div class="imglogo" title="overclocktech">
+
+<!-- <h1>OVERCLOCK . TECH</h1> -->
+</div></a>
+<div class="mi">
+	<a href="inicio" title="inicio"><div class="col"id="activo">Inicio</div></a>
+	<a href="acerca" title="acerca"><div class="col">Qu&iacute;enes Somos</div></a>
+	<a href="servicios" title="servicios"><div class="col">Servicios</div></a>
+	<a href="noticias" title="noticias"><div class="col">Noticias</div></a>
+	<a href="contacto" title="contacto"><div class="col">Contacto</div></a>
+</div>
+    </div>
+
+<div class="cuerpo">
+
+<div class="sli">
+	<div class="slic">
+
+	<div id="wowslider-container1">
+	<div class="ws_images"><ul>
+        <% for i in 0..1 %>
+        <li><img src="<%=banner[i]%>" alt="<%=titulo[i]%>" title="<%=titulo[i]%>" id="wows1_0" style="height:550px;"/></li>
+        <%end%>
+
+
+</ul></div>
+<div class="ws_bullets"><div>
+<a href="#" title="1">1</a>
+<a href="#" title="2">2</a>
+</div></div>
+<span class="wsl"></span>
+	<a href="#" class="ws_frame"></a>
+	<div class="ws_shadow"></div>
+	</div>
+	<script type="text/javascript" src="libreria/engine1/wowslider.js"></script>
+	<script type="text/javascript" src="libreria/engine1/script.js"></script>
+
+
+</div></div>
+<div class="facebook">
+  <iframe src="<%=facebook%>"></iframe>
+</div>
+</div>
